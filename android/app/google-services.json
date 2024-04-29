@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1077678746724",
+    "project_id": "my-cool-authentication",
+    "storage_bucket": "my-cool-authentication.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077678746724:android:fab5d961b39f52ef52c371",
+        "android_client_info": {
+          "package_name": "com.giri.email_auth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkPusgq04h_LGQka6PrDvyODRlrxurYIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077678746724:android:a7de632ee51937bf52c371",
+        "android_client_info": {
+          "package_name": "com.giri.smooth_dot_i"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBkPusgq04h_LGQka6PrDvyODRlrxurYIk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
