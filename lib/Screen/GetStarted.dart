@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:email_auth/Screen/SignUp.dart';
+import 'package:email_auth/Widget/UiHelper.dart';
 import 'package:flutter/material.dart';
 
 class Getstarted extends StatelessWidget {
@@ -27,80 +28,48 @@ class Getstarted extends StatelessWidget {
           BackdropFilter(
               filter: ImageFilter.blur(sigmaY: 3.0, sigmaX: 3.0),
               child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                child: Padding(
+                  padding: const EdgeInsets.all(32),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
 
-                    // Upper Blank Space ......................
-                    Expanded(child: Container()),
+                      // Upper Blank Space ......................
+                      Expanded(child: Container()),
 
-                    //Start Your Shoping ....................
-                    Text("Start Your Shopping Journey Now",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 32,
-                        )),
-
-                    //Description Text ......................
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 36,vertical: 8),
-                      child: Text("Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do",
+                      //Start Your Shoping ....................
+                      Text("Start Your Shopping Journey Now",
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            color: Colors.white70,
+                            color: Colors.white,
                             fontWeight: FontWeight.w600,
-                            fontSize: 18,
+                            fontSize: 32,
                           )),
-                    ),
 
-                    //Login Button ..........................
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            "Log In",style : TextStyle(color: Colors.orange.shade400,fontWeight: FontWeight.w500,fontSize: 18)
-                          ),
-                        ),
-                        height: 60,
-                        width: 300,
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.orange.shade400,width: 2,style: BorderStyle.solid),
-
-                        ),
+                      //Description Text ......................
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8),
+                        child: Text("Lorem ipsum dolor sit amet, consec tetur adipiscing elit, sed do",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 18,
+                            )),
                       ),
-                    ),
 
-                    //Sign Up Button ........................
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: InkWell(
-                        onTap: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen(),));
-                        },
-                        child: Container(
-                          child: Center(
-                            child: Text(
-                                "Sign Up",style : TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 18)
-                            ),
-                          ),
-                          height: 60,
-                          width: 300,
-                          decoration: BoxDecoration(
-                            color: Colors.orange.shade300,
-                            borderRadius: BorderRadius.circular(8),
-                            border: Border.all(color: Colors.orange.shade300,width: 2,style: BorderStyle.solid),
+                      //Login Button ..........................
+                      Uihelper().CustomButton("Log In", Colors.black,() {
 
-                          ),
-                        ),
-                      ),
-                    ),
+                      },),
 
-                  ],
+                      //Sign Up Button ........................
+                      Uihelper().CustomButton("Sign Up", Colors.orange.shade300,() {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen(),));
+                      },)
+
+                    ],
+                  ),
                 ),
               )),
         ],
