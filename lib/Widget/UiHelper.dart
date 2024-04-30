@@ -47,7 +47,7 @@ class Uihelper{
                 text,style : TextStyle(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 18)
             ),
           ),
-          height: 60,
+          height: 50,
           width: double.infinity,
           decoration: BoxDecoration(
             color: color,

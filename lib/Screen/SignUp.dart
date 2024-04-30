@@ -53,7 +53,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
           children: [
 
-            SizedBox(height: 150,),
+            SizedBox(height: 100,),
             Text(
               "Sign Up",
               style: TextStyle(
@@ -62,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   fontWeight: FontWeight.w900),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Text(
               "Create an so you can order your favourite watch easily and Quickly. ",
@@ -72,7 +72,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   fontWeight: FontWeight.w500),
             ),
             SizedBox(
-              height: 20,
+              height: 15,
             ),
             Uihelper().CustomTextField(
               emailController,
@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               child: Stack(
                 alignment: Alignment.center,
                 children: [
@@ -133,37 +133,45 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
+                  Expanded(
+                    flex: 4,
+                    child: Container(
 
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Image.asset('asset/image/google.png'),
-                    ),
-                    height: 60,
-                    width: 160,
-                    decoration: BoxDecoration(
-                        color: Colors.redAccent,
-                        borderRadius: BorderRadius.circular(8),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Image.asset('asset/image/google.png'),
+                      ),
+                      height: 50,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Colors.redAccent,
+                          borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                   ),
 
-                  Container(
+                  Expanded(child: SizedBox(width: double.infinity,),flex: 1,),
 
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Image.asset('asset/image/facebook-app-symbol.png'),
-                    ),
-                    height: 60,
-                    width: 160,
-                    decoration: BoxDecoration(
-                      color: CupertinoColors.systemBlue,
-                      borderRadius: BorderRadius.circular(8),
+                  Expanded(
+                    flex: 4,
+                    child: Container(
+
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Image.asset('asset/image/facebook-app-symbol.png'),
+                      ),
+                      height: 50,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: CupertinoColors.systemBlue,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 50,),
+            SizedBox(height: 30,),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
