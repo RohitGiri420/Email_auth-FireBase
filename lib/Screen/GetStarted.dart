@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:email_auth/Screen/Login.dart';
 import 'package:email_auth/Screen/SignUp.dart';
 import 'package:email_auth/Widget/UiHelper.dart';
 import 'package:flutter/material.dart';
@@ -60,7 +61,7 @@ class Getstarted extends StatelessWidget {
 
                       //Login Button ..........................
                       Uihelper().CustomButton("Log In", Colors.black,() {
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
                       },),
 
                       //Sign Up Button ........................

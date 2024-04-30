@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:email_auth/Screen/Login.dart';
 import 'package:email_auth/Widget/UiHelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -178,7 +179,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 Text("Already Have an Account?",style: TextStyle(color: Colors.black54,fontSize: 14,fontWeight: FontWeight.w600),),
                 TextButton(onPressed: () {
-
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
                 }, child:Text("Log In",style: TextStyle(color: Colors.orange.shade300),))
               ],
             )
