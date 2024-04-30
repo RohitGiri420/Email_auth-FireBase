@@ -4,7 +4,7 @@ class Uihelper{
 
   CustomTextField(TextEditingController controller, String text,bool obscure,IconData icon, VoidCallback ontap, ){
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Card(
         color: Colors.white70,
         shape: OutlineInputBorder(
