@@ -6,6 +6,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../Widget/UiHelper.dart';
+import 'FogotPassword.dart';
+import 'HomePage.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -25,13 +27,13 @@ class _LoginState extends State<Login> {
     }
     try{
       await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
-      return Navigator.push(context, MaterialPageRoute(builder: (context) => Getstarted(),));
+      return Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage(),));
     } catch (ex){
       if(ex is FirebaseAuthException){
         return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ex.code)));
       }
       else{
-
+        return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Unknown Error Occured")));
       }
     }
     
@@ -90,6 +92,8 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 TextButton(onPressed: () {
+
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => Fogotpassword(),));
 
                 }, child:Text("Forgot Password?",style: TextStyle(color: Colors.black54),)),
               ],
@@ -183,7 +187,7 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "Already Have an Account?",
+                  "Not a Member?",
                   style: TextStyle(
                       color: Colors.black54,
                       fontSize: 14,
@@ -198,7 +202,7 @@ class _LoginState extends State<Login> {
                           ));
                     },
                     child: Text(
-                      "Sign Up",
+                      "Join Now",
                       style: TextStyle(color: Colors.orange.shade300),
                     ))
               ],

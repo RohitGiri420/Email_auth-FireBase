@@ -35,7 +35,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       if (ex is FirebaseAuthException) {
         return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(ex.code)));
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("An error occurred")));
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Unknown error occurred")));
       }
     }
   }
