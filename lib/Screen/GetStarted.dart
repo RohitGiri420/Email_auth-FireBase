@@ -61,12 +61,12 @@ class Getstarted extends StatelessWidget {
 
                       //Login Button ..........................
                       Uihelper().CustomButton("Log In", Colors.black,() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => Login(),));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login(),));
                       },),
 
                       //Sign Up Button ........................
                       Uihelper().CustomButton("Sign Up", Colors.orange.shade300,() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpScreen(),));
+                        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpScreen(),));
                       },)
 
                     ],
