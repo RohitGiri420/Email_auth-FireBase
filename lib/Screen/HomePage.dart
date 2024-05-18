@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_auth/Screen/Login.dart';
 import 'package:email_auth/Widget/UiHelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -30,7 +31,9 @@ class _HomepageState extends State<Homepage> {
             children: [
               Uihelper().CustomTextField(titleController,"Title", false, Icons.title_rounded, (){}),
               Uihelper().CustomTextField(descContrller, "Description", false, Icons.description, (){}),
-              Uihelper().CustomButton("Save", Colors.orange, (){})
+              Uihelper().CustomButton("Save", Colors.orange, (){
+                Adddata(titleController.text, descContrller.text);
+              })
             ],
           ),
         ),
@@ -42,6 +45,23 @@ class _HomepageState extends State<Homepage> {
     FirebaseAuth.instance.signOut().then((value) {
       return Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Login(),));
     },);
+
+}
+
+Adddata(String title, String description){
+
+    if(title.isEmpty || description.isEmpty){
+      return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Enter Required Field")));
+    }
+    else{
+      FirebaseFirestore.instance.collection("Notes").doc(title).set({
+        "title": title,
+        "Decription": description
+      }).then((value){
+        return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("sucess...")));
+      });
+
+    }
 
 }
 
