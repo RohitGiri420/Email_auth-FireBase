@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:email_auth/Screen/Login.dart';
+import 'package:email_auth/Screen/fetchdata.dart';
 import 'package:email_auth/Widget/UiHelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -58,7 +59,7 @@ Adddata(String title, String description){
         "title": title,
         "Decription": description
       }).then((value){
-        return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("sucess...")));
+        return Navigator.push(context, MaterialPageRoute(builder: (context) => Fetchdata(),));
       });
 
     }
