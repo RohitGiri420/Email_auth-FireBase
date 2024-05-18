@@ -4,6 +4,8 @@ import 'package:email_auth/Screen/Login.dart';
 import 'package:email_auth/Screen/fetchdata.dart';
 import 'package:email_auth/Widget/UiHelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -71,7 +73,8 @@ class _HomepageState extends State<Homepage> {
               Uihelper().CustomTextField(titleController,"Title", false, Icons.title_rounded, (){}),
               Uihelper().CustomTextField(descContrller, "Description", false, Icons.description, (){}),
               Uihelper().CustomButton("Save", Colors.orange, (){
-                Adddata(titleController.text, descContrller.text);
+                // Adddata(titleController.text, descContrller.text);
+                auth(titleController.text);
               })
             ],
           ),
@@ -145,6 +148,35 @@ _ShowDialog(){
       );
     },);
 }
+
+auth(String title){
+    if(title.isEmpty || PickedImage == null){
+      return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Enter title")));
+    }else{
+      uploadImage(title);
+    }
+
+}
+  Future<void> uploadImage(String path) async {
+    try {
+      if (PickedImage == null) throw "No image selected";
+
+      UploadTask uploadTask = FirebaseStorage.instance.ref("ProfilePictures").child(path).putFile(PickedImage!);
+      TaskSnapshot taskSnapshot = await uploadTask;
+
+      String imageUrl = await taskSnapshot.ref.getDownloadURL();
+      String imageName = path;
+
+      FirebaseFirestore.instance.collection("Images").doc(imageName).set({
+        "Image name": imageName,
+        "Image Url": imageUrl
+      });
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Image uploaded successfully")));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Failed to upload image: $e")));
+    }
+  }
 
 }
 
