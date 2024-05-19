@@ -73,7 +73,7 @@ class _HomepageState extends State<Homepage> {
               Uihelper().CustomTextField(titleController,"Title", false, Icons.title_rounded, (){}),
               Uihelper().CustomTextField(descContrller, "Description", false, Icons.description, (){}),
               Uihelper().CustomButton("Save", Colors.orange, (){
-                // Adddata(titleController.text, descContrller.text);
+                Adddata(titleController.text, descContrller.text);
                 auth(titleController.text);
               })
             ],
@@ -153,19 +153,19 @@ auth(String title){
     if(title.isEmpty || PickedImage == null){
       return ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Enter title")));
     }else{
-      uploadImage(title);
+      uploadImage();
     }
 
 }
-  Future<void> uploadImage(String path) async {
+  Future<void> uploadImage() async {
     try {
       if (PickedImage == null) throw "No image selected";
 
-      UploadTask uploadTask = FirebaseStorage.instance.ref("ProfilePictures").child(path).putFile(PickedImage!);
+      UploadTask uploadTask = FirebaseStorage.instance.ref("ProfilePictures").child(titleController.text).putFile(PickedImage!);
       TaskSnapshot taskSnapshot = await uploadTask;
 
       String imageUrl = await taskSnapshot.ref.getDownloadURL();
-      String imageName = path;
+      String imageName = titleController.text;
 
       FirebaseFirestore.instance.collection("Images").doc(imageName).set({
         "Image name": imageName,
